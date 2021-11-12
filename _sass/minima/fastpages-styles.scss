@@ -66,7 +66,7 @@ h1, h2, h3, h4 {
     font-weight: normal !important;
     margin-bottom:0.5rem !important;  
     code {
-      font-size: 100%;
+      font-size: 80%;
     }
 }
 
@@ -108,9 +108,9 @@ details.description:not([open]) summary::after {
 
 // Adjust font size for footnotes.
 .footnotes {
-  font-size: 12px !important;
+  font-size: 10px !important;
   p, li{
-    font-size: 12px !important;
+    font-size: 10px !important;
  } 
 }
 
@@ -205,8 +205,8 @@ h6:hover .anchor-link {
 
 table {
   white-space: normal;
-  max-width: 100%;
-  font-size: 100%;
+  max-width: 75%;
+  font-size: 75%;
   border:none;
   th{
     text-align: center! important;
