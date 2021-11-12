@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-02-19T00:00:00-06:00" />
 <script type="application/ld+json">
-{"datePublished":"2021-02-19T00:00:00-06:00","url":"https://soon0698.github.io/immersion/markdown/2021/02/19/CS294-1.html","@type":"BlogPosting","headline":"CS294-158-SP20 Deep Unsupervised Learning Spring 2020 - (1)","dateModified":"2021-02-19T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://soon0698.github.io/immersion/markdown/2021/02/19/CS294-1.html"},"description":"본 포스팅은 버클리대학에서 진행된 Deep Unsupervised Learning 강의를 요약하고자 만들어진 포스팅이다. 강의에 대한 모든 자료와 영상은 웹사이트에 공개되어 있으며, 강의자인 Pieter Abbeel은 버클리 인공지능 연구 센터(BAIR)의 디렉터이기도 하다.","@context":"https://schema.org"}</script>
+{"url":"https://soon0698.github.io/immersion/markdown/2021/02/19/CS294-1.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://soon0698.github.io/immersion/markdown/2021/02/19/CS294-1.html"},"headline":"CS294-158-SP20 Deep Unsupervised Learning Spring 2020 - (1)","dateModified":"2021-02-19T00:00:00-06:00","datePublished":"2021-02-19T00:00:00-06:00","description":"본 포스팅은 버클리대학에서 진행된 Deep Unsupervised Learning 강의를 요약하고자 만들어진 포스팅이다. 강의에 대한 모든 자료와 영상은 웹사이트에 공개되어 있으며, 강의자인 Pieter Abbeel은 버클리 인공지능 연구 센터(BAIR)의 디렉터이기도 하다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/immersion/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://soon0698.github.io/immersion/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/immersion/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -98,10 +98,6 @@ window.onload = wrap_img;
 <ul>
 <li class="toc-entry toc-h2"><a href="#what-is-unsupervised-learning">What is Unsupervised Learning?</a></li>
 <li class="toc-entry toc-h2"><a href="#ideal-intelligence">Ideal Intelligence</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h1"><a href="#related-content">Related Content</a>
-<ul>
 <li class="toc-entry toc-h2"><a href="#lists">Lists</a></li>
 <li class="toc-entry toc-h2"><a href="#boxes-and-stuff">Boxes and stuff</a></li>
 <li class="toc-entry toc-h2"><a href="#images">Images</a></li>
@@ -165,8 +161,9 @@ Solomonoff Induction은 Kolmogorov Complexity의</li>
 </ul>
 
 <hr>
-<h1 id="related-content">
-<a class="anchor" href="#related-content" aria-hidden="true"><span class="octicon octicon-link"></span></a>Related Content</h1>
+<blockquote>
+  <p>Note: Related Content</p>
+</blockquote>
 
 <p><a href="https://sites.google.com/view/berkeley-cs294-158-sp20/home">Course Website</a>
 <strong>Instructor:</strong> <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a></p>
@@ -222,14 +219,14 @@ Solomonoff Induction은 Kolmogorov Complexity의</li>
 </blockquote>
 
 <div class="Toast Toast--warning googoo">
-   <span class="Toast-icon"><svg class="octicon octicon-alert octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
+   <span class="Toast-icon"><svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
    <span class="Toast-content">You can include alert boxes</span>
 </div>
 
 <p>…and…</p>
 
 <div class="Toast">
-   <span class="Toast-icon"><svg class="octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-icon"><svg class="octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
    <span class="Toast-content">You can include info boxes</span>
 </div>
 
