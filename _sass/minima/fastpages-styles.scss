@@ -1,6 +1,13 @@
 //Default Overrides For Styles In Minima 
 // If you wish to override any of this CSS, do so in _sass/minima/custom-styles.css
 
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('/assets/fonts/RIDIBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .post img {
         display: block;
         // border:1px solid #021a40;
@@ -21,13 +28,10 @@ img.emoji{
   color: light-grey;
 }
 
-//@include font-face(ridibatang, assets/fonts/ridibatang);
-//@include font-face(ridibatang-webfont, assets/fonts/ridibatang-webfont);
-
 .page-content {
         -webkit-font-smoothing: antialiased !important;
         text-rendering: optimizeLegibility !important;
-        font-family: ridibatang-webfont, "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
+        font-family: "RIDIBatang", "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
 }
 
 // make non-headings slightly lighter
