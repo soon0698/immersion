@@ -323,13 +323,15 @@ table td { border: 1px solid #e8e8e8; }
 
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
+@font-face { font-family: 'RIDIBatang'; src: url("/assets/fonts/RIDIBatang.woff") format("woff"); font-weight: normal; font-style: normal; }
+
 .post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; }
 
 img.emoji { display: inline !important; vertical-align: baseline !important; }
 
 .post figcaption { text-align: center; font-size: .8rem; font-style: italic; color: light-grey; }
 
-.page-content { -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important; font-family: ridibatang-webfont, "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important; }
+.page-content { -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important; font-family: "RIDIBatang", "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important; }
 
 .post-content p, .post-content li { font-size: 12px; color: #515151; }
 
