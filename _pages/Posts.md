@@ -1,5 +1,16 @@
 ---
 layout: page
-title: Posts
-permalink: /
+title: Post
+permalink: /post/
 ---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
