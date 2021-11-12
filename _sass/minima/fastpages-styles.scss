@@ -21,8 +21,8 @@ img.emoji{
   color: light-grey;
 }
 
-@include font-face(ridibatang, assets/fonts/ridibatang);
-@include font-face(ridibatang-webfont, assets/fonts/ridibatang-webfont);
+//@include font-face(ridibatang, assets/fonts/ridibatang);
+//@include font-face(ridibatang-webfont, assets/fonts/ridibatang-webfont);
 
 .page-content {
         -webkit-font-smoothing: antialiased !important;
