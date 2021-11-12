@@ -21,15 +21,18 @@ img.emoji{
   color: light-grey;
 }
 
+@include font-face(ridibatang, assets/fonts/ridibatang);
+@include font-face(ridibatang-webfont, assets/fonts/ridibatang-webfont);
+
 .page-content {
         -webkit-font-smoothing: antialiased !important;
         text-rendering: optimizeLegibility !important;
-        font-family: "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
+        font-family: ridibatang-webfont, "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
 }
 
 // make non-headings slightly lighter
 .post-content p, .post-content li {
-   font-size: 20px;
+   font-size: 14px;
    color: #515151;
 }
 
