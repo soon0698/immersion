@@ -347,7 +347,7 @@ p { margin-top: 1rem !important; margin-bottom: 1rem !important; }
 
 h1, h2, h3, h4 { font-weight: normal !important; margin-bottom: 0.5rem !important; }
 
-h1 code, h2 code, h3 code, h4 code { font-size: 100%; }
+h1 code, h2 code, h3 code, h4 code { font-size: 80%; }
 
 pre { margin-bottom: 1.5rem !important; }
 
@@ -363,9 +363,9 @@ details.description:not([open]) summary::after { content: attr(data-close); }
 
 .notebook-badge-image { border: 0 !important; }
 
-.footnotes { font-size: 12px !important; }
+.footnotes { font-size: 10px !important; }
 
-.footnotes p, .footnotes li { font-size: 12px !important; }
+.footnotes p, .footnotes li { font-size: 10px !important; }
 
 .social-media-list .svg-icon, .pagination .svg-icon { width: 25px !important; height: 23px !important; }
 
@@ -403,7 +403,7 @@ h1:hover .anchor-link, h2:hover .anchor-link, h3:hover .anchor-link, h4:hover .a
 
 .search-result-highlight { color: #2e0137; font-weight: bold; }
 
-table { white-space: normal; max-width: 100%; font-size: 100%; border: none; }
+table { white-space: normal; max-width: 75%; font-size: 75%; border: none; }
 
 table th { text-align: center !important; }
 
