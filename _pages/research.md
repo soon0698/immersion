@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Research
+permalink: /research/
 ---
 
 This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
