@@ -4,19 +4,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Uniform additive noise는 무엇이고, 어떻게 동작하는가? | Immersion</title>
+<title>Review - Implicit Neural Representations | Immersion</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Uniform additive noise는 무엇이고, 어떻게 동작하는가?" />
+<meta property="og:title" content="Review - Implicit Neural Representations" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="이산적 값에 대해 연속적인 근사 함수로써, 딥러닝 압축 분야에서 이산적 값에 대한 엔트로피 코딩의 gradient를 계산할 수 있도록 하는 Uniform additive noise 방법에 대하여 서술한다." />
-<meta property="og:description" content="이산적 값에 대해 연속적인 근사 함수로써, 딥러닝 압축 분야에서 이산적 값에 대한 엔트로피 코딩의 gradient를 계산할 수 있도록 하는 Uniform additive noise 방법에 대하여 서술한다." />
-<link rel="canonical" href="https://soon0698.github.io/immersion/markdown/2021/07/14/Uniform.html" />
-<meta property="og:url" content="https://soon0698.github.io/immersion/markdown/2021/07/14/Uniform.html" />
+<meta name="description" content="단순한 multilayer perceptron (MLP)를 통해 visual representations를 근사하는 방법으로, 최근 여러 vision task에서 압도적인 성능으로 대표 방법이 되어가고 있는 ‘implicit neural representations’ 계열의 대표 논문에 대하여 서술한다." />
+<meta property="og:description" content="단순한 multilayer perceptron (MLP)를 통해 visual representations를 근사하는 방법으로, 최근 여러 vision task에서 압도적인 성능으로 대표 방법이 되어가고 있는 ‘implicit neural representations’ 계열의 대표 논문에 대하여 서술한다." />
+<link rel="canonical" href="https://soon0698.github.io/immersion/markdown/2021/08/15/Nerf.html" />
+<meta property="og:url" content="https://soon0698.github.io/immersion/markdown/2021/08/15/Nerf.html" />
 <meta property="og:site_name" content="Immersion" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-07-14T00:00:00-05:00" />
+<meta property="article:published_time" content="2021-08-15T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://soon0698.github.io/immersion/markdown/2021/07/14/Uniform.html","headline":"Uniform additive noise는 무엇이고, 어떻게 동작하는가?","dateModified":"2021-07-14T00:00:00-05:00","datePublished":"2021-07-14T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://soon0698.github.io/immersion/markdown/2021/07/14/Uniform.html"},"description":"이산적 값에 대해 연속적인 근사 함수로써, 딥러닝 압축 분야에서 이산적 값에 대한 엔트로피 코딩의 gradient를 계산할 수 있도록 하는 Uniform additive noise 방법에 대하여 서술한다.","@context":"https://schema.org"}</script>
+{"url":"https://soon0698.github.io/immersion/markdown/2021/08/15/Nerf.html","headline":"Review - Implicit Neural Representations","dateModified":"2021-08-15T00:00:00-05:00","datePublished":"2021-08-15T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://soon0698.github.io/immersion/markdown/2021/08/15/Nerf.html"},"description":"단순한 multilayer perceptron (MLP)를 통해 visual representations를 근사하는 방법으로, 최근 여러 vision task에서 압도적인 성능으로 대표 방법이 되어가고 있는 ‘implicit neural representations’ 계열의 대표 논문에 대하여 서술한다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/immersion/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://soon0698.github.io/immersion/feed.xml" title="Immersion" /><link rel="shortcut icon" type="image/x-icon" href="/immersion/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -87,8 +87,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Uniform additive noise는 무엇이고, 어떻게 동작하는가?</h1><p class="page-description">이산적 값에 대해 연속적인 근사 함수로써, 딥러닝 압축 분야에서 이산적 값에 대한 엔트로피 코딩의 gradient를 계산할 수 있도록 하는 Uniform additive noise 방법에 대하여 서술한다.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-07-14T00:00:00-05:00" itemprop="datePublished">
-        Jul 14, 2021
+    <h1 class="post-title p-name" itemprop="name headline">Review - Implicit Neural Representations</h1><p class="page-description">단순한 multilayer perceptron (MLP)를 통해 visual representations를 근사하는 방법으로, 최근 여러 vision task에서 압도적인 성능으로 대표 방법이 되어가고 있는 'implicit neural representations' 계열의 대표 논문에 대하여 서술한다.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-08-15T00:00:00-05:00" itemprop="datePublished">
+        Aug 15, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
     
@@ -104,12 +104,10 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
-<li class="toc-entry toc-h2"><a href="#traditional-video-codec">Traditional Video Codec</a></li>
-<li class="toc-entry toc-h2"><a href="#optimized-end-to-end">Optimized End-to-end</a></li>
-<li class="toc-entry toc-h2"><a href="#deep-compression">Deep Compression</a></li>
-<li class="toc-entry toc-h2"><a href="#scalable-model-compression">Scalable Model Compression</a></li>
-<li class="toc-entry toc-h2"><a href="#implementation-code">Implementation (code)</a></li>
-<li class="toc-entry toc-h2"><a href="#코드의-동작법-트릭">코드의 동작법 (트릭)</a>
+<li class="toc-entry toc-h2"><a href="#nerf">Nerf</a></li>
+<li class="toc-entry toc-h2"><a href="#fourier-features-let-networks-learn-high-frequency-functions-in-low-dimensional-domains-nips20">‘Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains’ NIPS’20</a></li>
+<li class="toc-entry toc-h2"><a href="#implicit-neural-representations-with-periodic-activation-functions">Implicit Neural Representations with Periodic Activation Functions</a></li>
+<li class="toc-entry toc-h2"><a href="#implementation-code">Implementation (code)</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#related-posts">Related Posts</a></li>
 <li class="toc-entry toc-h3"><a href="#references">References</a></li>
@@ -118,62 +116,46 @@ window.onload = wrap_img;
 </ul><h2 id="introduction">
 <a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
 <ul>
-  <li>Data Compression에 관한 내용</li>
-  <li>Shanon 표현법</li>
-  <li>엔트로피 최소화</li>
-  <li>기존 코덱 방법 동작</li>
-  <li>코딩 (CABAC) 등</li>
-  <li>‘zero gradient’</li>
+  <li>coordinate-based MLPs</li>
+  <li>Photometry</li>
+  <li>Depth map (Stereo)</li>
+  <li>기존의 문제 (Low-level 비전 / VAE)</li>
 </ul>
 
-<h2 id="traditional-video-codec">
-<a class="anchor" href="#traditional-video-codec" aria-hidden="true"><span class="octicon octicon-link"></span></a>Traditional Video Codec</h2>
+<h2 id="nerf">
+<a class="anchor" href="#nerf" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nerf</h2>
 <ul>
-  <li>주파수 도메인 변환</li>
-  <li>양자화 &amp; 라운딩</li>
-  <li>QP 값</li>
-  <li>RD-cost tradeoff (Perception tradeoff)</li>
-  <li>RD plot</li>
+  <li>Multiview</li>
+  <li>Photometry</li>
+  <li>Depth map (Stereo)</li>
+  <li>novel view synthesis</li>
+  <li>다른 점 강조 (CNN은 공유 가중치, MLP은 fitting)</li>
 </ul>
 
-<h2 id="optimized-end-to-end">
-<a class="anchor" href="#optimized-end-to-end" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimized End-to-end</h2>
+<h2 id="fourier-features-let-networks-learn-high-frequency-functions-in-low-dimensional-domains-nips20">
+<a class="anchor" href="#fourier-features-let-networks-learn-high-frequency-functions-in-low-dimensional-domains-nips20" aria-hidden="true"><span class="octicon octicon-link"></span></a>‘Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains’ NIPS’20</h2>
 <ul>
-  <li>Review (GDN)</li>
-  <li>Review (Uniform additive noise)</li>
-  <li>Continuously-relaxed loss function</li>
-  <li>‘당황스럽게 잘 동작’</li>
-  <li>그림</li>
+  <li>영상</li>
+  <li>neural tangent kernel (NTK)</li>
+  <li>positional encoding</li>
 </ul>
 
-<h2 id="deep-compression">
-<a class="anchor" href="#deep-compression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deep Compression</h2>
+<h2 id="implicit-neural-representations-with-periodic-activation-functions">
+<a class="anchor" href="#implicit-neural-representations-with-periodic-activation-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implicit Neural Representations with Periodic Activation Functions</h2>
+<ul>
+  <li>Concurrent Work? (좀 결이 다름)</li>
+</ul>
 
-<h2 id="scalable-model-compression">
-<a class="anchor" href="#scalable-model-compression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scalable Model Compression</h2>
-
-<p>Linear filters were parameterized using their discrete cosine transform (DCT) coefficients.
-We found this to be slightly more effective in speeding up the convergence than discrete
-Fourier transform (DFT) parameterization - ICLR’17</p>
-
-<p>(2부?)</p>
 <h2 id="implementation-code">
 <a class="anchor" href="#implementation-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation (code)</h2>
 <ul>
-  <li>tensorflow-compression</li>
-  <li>CompressAI</li>
-</ul>
-
-<h2 id="코드의-동작법-트릭">
-<a class="anchor" href="#%EC%BD%94%EB%93%9C%EC%9D%98-%EB%8F%99%EC%9E%91%EB%B2%95-%ED%8A%B8%EB%A6%AD" aria-hidden="true"><span class="octicon octicon-link"></span></a>코드의 동작법 (트릭)</h2>
-<ul>
-  <li>Test 시에는 rounding</li>
+  <li>Code</li>
 </ul>
 
 <hr>
 <h3 id="related-posts">
 <a class="anchor" href="#related-posts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Related Posts</h3>
-<p>MPEG 코덱의 미래 (2022)</p>
+<p>MPEG Immersive Video</p>
 
 <h3 id="references">
 <a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h3>
@@ -187,7 +169,7 @@ Fourier transform (DFT) parameterization - ICLR’17</p>
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/immersion/markdown/2021/07/14/Uniform.html" hidden></a>
+</script><a class="u-url" href="/immersion/markdown/2021/08/15/Nerf.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
