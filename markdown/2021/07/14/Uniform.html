@@ -102,11 +102,19 @@ window.onload = wrap_img;
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <blockquote>
-  <p>이산적 값에 대해 연속적인 근사 함수로써, 딥러닝 압축 분야에서 이산적 값에 대한 엔트로피 코딩의 gradient를 계산할 수 있도록 하는 Uniform additive noise 방법에 대하여 서술한다.</p>
-</blockquote>
-
-<h2 id="introduction">Introduction</h2>
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h2"><a href="#optimized-end-to-end">Optimized End-to-end</a></li>
+<li class="toc-entry toc-h2"><a href="#implementation-code">Implementation (code)</a></li>
+<li class="toc-entry toc-h2"><a href="#코드의-동작법-트릭">코드의 동작법 (트릭)</a></li>
+<li class="toc-entry toc-h2"><a href="#scalable-model-compression">Scalable Model Compression</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#related-posts">Related Posts</a></li>
+<li class="toc-entry toc-h3"><a href="#references">References</a></li>
+</ul>
+</li>
+</ul><h2 id="introduction">
+<a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
 <ul>
   <li>Data Compression에 관한 내용</li>
   <li>Shanon 표현법</li>
@@ -116,7 +124,8 @@ window.onload = wrap_img;
   <li>‘zero gradient’</li>
 </ul>
 
-<h2 id="optimized-end-to-end">Optimized End-to-end</h2>
+<h2 id="optimized-end-to-end">
+<a class="anchor" href="#optimized-end-to-end" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimized End-to-end</h2>
 <ul>
   <li>Review (GDN)</li>
   <li>Review (Uniform additive noise)</li>
@@ -124,30 +133,35 @@ window.onload = wrap_img;
   <li>‘당황스럽게 잘 동작’</li>
 </ul>
 
-<h2 id="implementation-code">Implementation (code)</h2>
+<h2 id="implementation-code">
+<a class="anchor" href="#implementation-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation (code)</h2>
 <ul>
   <li>tensorflow-compression</li>
   <li>CompressAI</li>
 </ul>
 
-<h2 id="코드의-동작법-트릭">코드의 동작법 (트릭)</h2>
+<h2 id="코드의-동작법-트릭">
+<a class="anchor" href="#%EC%BD%94%EB%93%9C%EC%9D%98-%EB%8F%99%EC%9E%91%EB%B2%95-%ED%8A%B8%EB%A6%AD" aria-hidden="true"><span class="octicon octicon-link"></span></a>코드의 동작법 (트릭)</h2>
 <ul>
   <li>Test 시에는 rounding</li>
 </ul>
 
-<h2 id="scalable-model-compression">Scalable Model Compression</h2>
+<h2 id="scalable-model-compression">
+<a class="anchor" href="#scalable-model-compression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scalable Model Compression</h2>
 
 <p>Linear filters were parameterized using their discrete cosine transform (DCT) coefficients.
 We found this to be slightly more effective in speeding up the convergence than discrete
 Fourier transform (DFT) parameterization - ICLR’17</p>
 
-<hr />
+<hr>
 
-<hr />
-<h3 id="related-posts">Related Posts</h3>
+<hr>
+<h3 id="related-posts">
+<a class="anchor" href="#related-posts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Related Posts</h3>
 <p>MPEG 코덱의 미래</p>
 
-<h3 id="references">References</h3>
+<h3 id="references">
+<a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h3>
 <ol class="bibliography"></ol>
 
   </div><!-- from https://github.com/utterance/utterances -->
