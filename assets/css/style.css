@@ -323,7 +323,7 @@ table td { border: 1px solid #e8e8e8; }
 
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-@font-face { font-family: 'RIDIBatang'; src: url("/assets/fonts/RIDIBatang.woff") format("woff"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'RIDIBatang'; src: url("/assets/fonts/ridibatang.woff") format("woff"); font-weight: normal; font-style: normal; }
 
 .post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; }
 
