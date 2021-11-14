@@ -2,7 +2,7 @@
 // If you wish to override any of this CSS, do so in _sass/minima/custom-styles.css
 
 @font-face {
-  font-family: 'RIDIBatang';
+  font-family: 'ridibatang';
   src: url('/assets/fonts/ridibatang.woff') format('woff');
   font-weight: normal;
   font-style: normal;
@@ -31,7 +31,7 @@ img.emoji{
 .page-content {
         -webkit-font-smoothing: antialiased !important;
         text-rendering: optimizeLegibility !important;
-        font-family: "RIDIBatang", "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
+        font-family: "ridibatang", "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
 }
 
 // make non-headings slightly lighter
