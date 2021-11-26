@@ -111,7 +111,7 @@ window.onload = wrap_img;
 </li>
 <li class="toc-entry toc-h2"><a href="#siren">SIREN</a></li>
 <li class="toc-entry toc-h2"><a href="#fourier-features-let-networks-learn-high-frequency-functions-in-low-dimensional-domains-nips20">‘Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains’ NIPS’20</a></li>
-<li class="toc-entry toc-h2"><a href="#nerf">Nerf</a></li>
+<li class="toc-entry toc-h2"><a href="#nerf-여기선-간단히-설명하고-다른-포스트로-특집---코드리뷰도-하고-연관논문-소개도-하고">Nerf (여기선 간단히 설명하고, 다른 포스트로 특집.   코드리뷰도 하고, 연관논문 소개도 하고.)</a></li>
 <li class="toc-entry toc-h2"><a href="#implementation-code">Implementation (code)</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#related-posts">Related Posts</a></li>
@@ -126,7 +126,7 @@ window.onload = wrap_img;
 
 <h3 id="why-are-they-interesting">
 <a class="anchor" href="#why-are-they-interesting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why are they interesting?</h3>
-<p>그렇다면 굳이 그 어려운 문제를, 이산적인 신호를 연속적으로 다루면 어떤 점에서 좋을까? 먼저 한 가지 예시 논문을 들어보자. (Occupancy Networks: Learning 3D Reconstruction in Function Space)에서는 3차원 데이터를 뉴럴 네트워크에 학습해 복원하고자 하는 task를 다룬다. 가장 먼저 직면하는 한 가지 문제점은 3차원 데이터에 대한 메모리와 계산량 문제이다. 복셀(voxel) 표현을 이용할 경우, 256개의 복셀로 이루어진 작은 데이터를 표현하는데에도 $256^{3}$개의 그리드가 필요하며 메모리 측면에서 효율적이라고 볼 수 없다. 포인트 클라우드(point cloud) 표현은 현재까지도 여러 많은 연구가 진행되고 있지만 여전히 데이터 특성상 다루기 어렵고 물체의 boundary 등 structure 정보가 모호한 단점을 갖고 있다. 메쉬(mesh) 표현은 그 특성상 데이터의 표현형이 제한되어있기 때문에 (특히 사람의 얼굴 등) 범용적으로 사용되기가 어렵다.</p>
+<p>그렇다면 굳이 그 어려운 문제를 풀어야 하는 이유는 무엇일까? 이산적인 신호를 연속적으로 다루면 어떤 점에서 좋을까? 먼저 한 가지 예시 논문을 들어보자. (Occupancy Networks: Learning 3D Reconstruction in Function Space)에서는 3차원 데이터를 뉴럴 네트워크에 학습해 복원하고자 하는 task를 다룬다. 가장 먼저 직면하는 한 가지 문제점은 3차원 데이터에 대한 메모리와 계산량 문제이다. 복셀(voxel) 표현을 이용할 경우, 한 면이 256개의 복셀로 이루어진 작은 데이터를 표현하는데에도 $256^{3}$개의 그리드가 필요하며 메모리 측면에서 효율적이라고 볼 수 없다. 포인트 클라우드(point cloud) 표현은 현재까지도 여러 많은 연구가 진행되고 있지만 여전히 데이터 특성상 다루기 어렵고 물체의 boundary 등 structure 정보가 모호한 단점을 갖고 있다. 메쉬(mesh) 표현은 그 특성상 데이터의 표현형이 제한(특히 사람의 얼굴 등)되어있기 때문에 범용적으로 사용되기가 어렵다.</p>
 
 <p>이 논문에서는 그렇다면 뉴럴 네트워크가 이 단점들을 모두 해결하는 ‘제 4의 표현을 찾아내줄 수 있을까?’ 라는 질문을 던지고, continuous 3D occupancy function이 실제로 그럴 수 있다는 것을 보이며 occupancy function을 제안한다.</p>
 
@@ -174,8 +174,8 @@ https://github.com/bmild/nerf/issues/60</p>
   <li>positional encoding</li>
 </ul>
 
-<h2 id="nerf">
-<a class="anchor" href="#nerf" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nerf</h2>
+<h2 id="nerf-여기선-간단히-설명하고-다른-포스트로-특집---코드리뷰도-하고-연관논문-소개도-하고">
+<a class="anchor" href="#nerf-%EC%97%AC%EA%B8%B0%EC%84%A0-%EA%B0%84%EB%8B%A8%ED%9E%88-%EC%84%A4%EB%AA%85%ED%95%98%EA%B3%A0-%EB%8B%A4%EB%A5%B8-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%A1%9C-%ED%8A%B9%EC%A7%91---%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0%EB%8F%84-%ED%95%98%EA%B3%A0-%EC%97%B0%EA%B4%80%EB%85%BC%EB%AC%B8-%EC%86%8C%EA%B0%9C%EB%8F%84-%ED%95%98%EA%B3%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nerf (여기선 간단히 설명하고, 다른 포스트로 특집.   코드리뷰도 하고, 연관논문 소개도 하고.)</h2>
 <ul>
   <li>Multiview</li>
   <li>Photometry</li>
