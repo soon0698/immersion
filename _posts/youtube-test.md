@@ -1,7 +1,7 @@
 ---
 toc: true
 comments: true
-layout: post
+layout: none
 description: Test
 categories: [markdown]
 title: TEST
