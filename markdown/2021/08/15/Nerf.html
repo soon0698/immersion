@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      3 min read
     
 </span></p>
 
@@ -105,6 +105,7 @@ window.onload = wrap_img;
     <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
 <li class="toc-entry toc-h2"><a href="#nerf">Nerf</a></li>
+<li class="toc-entry toc-h2"><a href="#siren">SIREN</a></li>
 <li class="toc-entry toc-h2"><a href="#fourier-features-let-networks-learn-high-frequency-functions-in-low-dimensional-domains-nips20">‘Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains’ NIPS’20</a></li>
 <li class="toc-entry toc-h2"><a href="#implicit-neural-representations-with-periodic-activation-functions">Implicit Neural Representations with Periodic Activation Functions</a></li>
 <li class="toc-entry toc-h2"><a href="#implementation-code">Implementation (code)</a>
@@ -115,8 +116,24 @@ window.onload = wrap_img;
 </li>
 </ul><h2 id="introduction">
 <a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>What are implicit neural representations?
+Implicit Neural Representations (sometimes also referred to as coordinate-based representations) are a novel way to parameterize signals of all kinds. Conventional signal representations are usually discrete - for instance, images are discrete grids of pixels, audio signals are discrete samples of amplitudes, and 3D shapes are usually parameterized as grids of voxels, point clouds, or meshes. In contrast, Implicit Neural Representations parameterize a signal as a continuous function that maps the domain of the signal (i.e., a coordinate, such as a pixel coordinate for an image) to whatever is at that coordinate (for an image, an R,G,B color). Of course, these functions are usually not analytically tractable - it is impossible to “write down” the function that parameterizes a natural image as a mathematical formula. Implicit Neural Representations thus approximate that function via a neural network.</p>
 <ul>
-  <li>coordinate-based MLPs</li>
+  <li>직접적인 데이터(신호)를 전달한다.</li>
+</ul>
+
+<p>Why are they interesting?
+Implicit Neural Representations have several benefits: First, they are not coupled to spatial resolution anymore, the way, for instance, an image is coupled to the number of pixels. This is because they are continuous functions! Thus, the memory required to parameterize the signal is independent of spatial resolution, and only scales with the complexity of the underyling signal. Another corollary of this is that implicit representations have “infinite resolution” - they can be sampled at arbitrary spatial resolutions.</p>
+
+<p>This is immediately useful for a number of applications, such as super-resolution, or in parameterizing signals in 3D and higher dimensions, where memory requirements grow intractably fast with spatial resolution. Further, generalizing across neural implicit representations amounts to learning a prior over a space of functions, implemented via learning a prior over the weights of neural networks - this is commonly referred to as meta-learning and is an extremely exciting intersection of two very active research areas! Another exciting overlap is between neural implicit representations and the study of symmetries in neural network architectures - for intance, creating a neural network architecture that is 3D rotation-equivariant immediately yields a viable path to rotation-equivariant generative models via neural implicit representations.</p>
+
+<p>Another key promise of implicit neural representations lie in algorithms that directly operate in the space of these representations. In other words: What’s the “convolutional neural network” equivalent of a neural network operating on images represented by implicit representations?</p>
+
+<ul>
+  <li>트위터 인용 (https://twitter.com/vincesitzmann/status/1343628606405271554)</li>
+  <li>Implicit layer와는 다르다 (트위터 논쟁)
+Implicit</li>
   <li>Photometry</li>
   <li>Depth map (Stereo)</li>
   <li>기존의 문제 (Low-level 비전 / VAE)</li>
@@ -132,8 +149,23 @@ window.onload = wrap_img;
   <li>다른 점 강조 (CNN은 공유 가중치, MLP은 fitting)</li>
 </ul>
 
+<h2 id="siren">
+<a class="anchor" href="#siren" aria-hidden="true"><span class="octicon octicon-link"></span></a>SIREN</h2>
+<p>https://twitter.com/vincesitzmann/status/1274119064797888513
+https://github.com/bmild/nerf/issues/60</p>
+
 <h2 id="fourier-features-let-networks-learn-high-frequency-functions-in-low-dimensional-domains-nips20">
 <a class="anchor" href="#fourier-features-let-networks-learn-high-frequency-functions-in-low-dimensional-domains-nips20" aria-hidden="true"><span class="octicon octicon-link"></span></a>‘Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains’ NIPS’20</h2>
+<p>뒤이어 나온 후속논문인 약칭 Fourier Feature Networks에서는 입력 좌표에 대해 간단한 Fourier feature mapping을 해주는 것만으로도 MLP가 다양한 도메인에서 고주파 정보를 잘 습득하게 된다는 점을 밝힌 바 있다. 재미있게도 논문에서는 이렇게 MLP를 이용해 이산적인 신호를 연속함수로 근사하는 Implicit 방법에 대해 “coordinate-based” MLP라고 이름을 새로 붙여주었는데, 네트워크의 입력이 좌표값이 되고 예측값은 그 좌표에 해당하는 결과값(통상적으로 color, density, shape)이 된다는 점에서 더 직관적이고 합당한 이름이라고 생각한다. 논문에서는 제안하는 방법의 타당성을 위해 neural tangent kernel (NTK)의 개념을 활용해 이론적으로도 여러 내용을 제시하여 논문 자체에 담긴 수식들과 그 배경은 꽤 무겁게 느껴지지만, 제안하는 핵심 방법 자체는 코드 한 줄 변경만으로 이루어질 정도로 간단하다.(이는 부록으로 남겨둔다 http://jnwoo.com/post/10/) Coordinate-based MLP 방법론의 기본적인 형태는 입력 좌표 $v$에 대해 다음과 같다:</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false">(</mo><mi mathvariant="bold">v</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">[</mo><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi mathvariant="bold">v</mi><mi>v</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi mathvariant="bold">v</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">]</mo><mi mathvariant="normal">T</mi></msup></mrow><annotation encoding="application/x-tex">\gamma(\mathbf{v})=[\cos (2 \pi \mathbf{v} v), \sin (2 \pi \mathbf{v})]^{\mathrm{T}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1413309999999999em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mop">cos</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span></span><span class="mclose">)</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">T</span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+
+<p>제안하는 방법에서는 우리가 예측할 신호에 대한 주파수 스펙트럼의 형태를 정확히 추정할 수 없기 때문에, 단순한 Gaussian 분포 $\mathcal{N}\left(0, \sigma^{2}\right)$에 해당하는 $B$를 도입한다. 이 때, 표준편차는 하이퍼파라미터가 되며 뒤이어 설명하겠지만 안정적인 학습을 위해서는 이 하이퍼파라미터를 잘 결정해주는 게 매우 중요하다. 결과적으로 Fourier Feature Networks의 도입 형태는 다음과 같다:</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false">(</mo><mi mathvariant="bold">v</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">[</mo><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi mathvariant="bold">B</mi><mi mathvariant="bold">v</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>2</mn><mi>π</mi><mi mathvariant="bold">B</mi><mi mathvariant="bold">v</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">]</mo><mi mathvariant="normal">T</mi></msup></mrow><annotation encoding="application/x-tex">\gamma(\mathbf{v})=[\cos (2 \pi \mathbf{B} \mathbf{v}), \sin (2 \pi \mathbf{B} \mathbf{v})]^{\mathrm{T}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1413309999999999em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mop">cos</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="mord"><span class="mord mathbf">B</span></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="mord"><span class="mord mathbf">B</span></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span></span><span class="mclose">)</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">T</span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+
+<p>(PE와의 비교)</p>
+
 <ul>
   <li>영상</li>
   <li>neural tangent kernel (NTK)</li>
