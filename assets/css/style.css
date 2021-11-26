@@ -325,13 +325,15 @@ table td { border: 1px solid #e8e8e8; }
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
 @font-face { font-family: 'ridibatang'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff") format("woff"); font-weight: normal; font-style: normal; }
 
+@font-face { font-family: "Computer Modern"; src: url("http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf"); }
+
 .post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; }
 
 img.emoji { display: inline !important; vertical-align: baseline !important; }
 
 .post figcaption { text-align: center; font-size: .8rem; font-style: italic; color: light-grey; }
 
-.page-content { -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important; font-family: "ridibatang", "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important; }
+.page-content { -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important; font-family: "Computer Modern", "ridibatang", "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important; }
 
 .post-content p, .post-content li { font-size: 16px; color: #515151; }
 
