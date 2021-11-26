@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "TEST",
-            "content": "some blue text. .",
+            "content": "some blue text. . %%latex . bf{This is a test} It allows latex $ alpha= beta$ and test: . begin{equation} alpha = beta end{equation} % this is a latex comment .",
             "url": "https://soon0698.github.io/immersion/markdown/2021/11/01/test.html",
             "relUrl": "/markdown/2021/11/01/test.html",
             "date": " • Nov 1, 2021"
