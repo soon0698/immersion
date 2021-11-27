@@ -10,27 +10,9 @@
 
 @font-face {
   font-family: "Computer Modern";
-  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
-}
-@font-face {
-  font-family: "Computer Modern";
-  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
-  font-weight: bold;
-}
-@font-face {
-  font-family: "Computer Modern";
-  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
-  font-style: italic, oblique;
-}
-@font-face {
-  font-family: "Computer Modern";
-  src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
-  font-weight: bold;
-  font-style: italic, oblique;
-}
-
-body {
-  font-family: "Computer Modern", sans-serif;
+  src: url('http://mirrors.concertpass.com/tex-archive/fonts/cm-unicode/fonts/otf/cmunss.otf');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .post img {
@@ -56,7 +38,7 @@ img.emoji{
 .page-content {
         -webkit-font-smoothing: antialiased !important;
         text-rendering: optimizeLegibility !important;
-        font-family: "Computer Modern Sans", "ridibatang", "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
+        font-family: "Computer Modern", "ridibatang", "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
 }
 
 // make non-headings slightly lighter
@@ -134,7 +116,6 @@ details.description:not([open]) summary::after {
 // Adjust font size for katex.
 .katex {
   font-size: 22px !important;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 
