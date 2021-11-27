@@ -373,7 +373,7 @@ details.description:not([open]) summary::after { content: attr(data-close); }
 
 .notebook-badge-image { border: 0 !important; }
 
-.katex { font-size: 22px !important; }
+.katex { font-size: 22px !important; font-family: Arial, Helvetica, sans-serif; }
 
 .footnotes { font-size: 10px !important; }
 
