@@ -365,6 +365,8 @@ details.description:not([open]) summary::after { content: attr(data-close); }
 
 .notebook-badge-image { border: 0 !important; }
 
+.katex { font-size: 22px !important; }
+
 .footnotes { font-size: 10px !important; }
 
 .footnotes p, .footnotes li { font-size: 10px !important; }
