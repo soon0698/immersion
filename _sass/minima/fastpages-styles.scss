@@ -113,6 +113,12 @@ details.description:not([open]) summary::after {
   border:0 !important;
 }
 
+// Adjust font size for katex.
+.katex {
+  font-size: 22px !important;
+}
+
+
 // Adjust font size for footnotes.
 .footnotes {
   font-size: 10px !important;
