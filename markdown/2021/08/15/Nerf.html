@@ -118,7 +118,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#references">References</a></li>
 </ul>
 </li>
-</ul><p>https://lifeisforu.tistory.com/539 What is Implicit modelling?</p>
+</ul><p>https://lifeisforu.tistory.com/539 What is Implicit modelling? (*Appendix)</p>
 
 <h2 id="introduction">
 <a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
@@ -126,7 +126,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#what-is-implicit-neural-representations" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is implicit neural representations?</h3>
 <p>우리가 처리하는 대부분의 신호는 픽셀 단위의 이미지, 샘플링된 오디오 신호, 그리고 3차원 데이터라 하더라도 통상적으로 복셀(voxel), 포인트 클라우드(point cloud), 메쉬(mesh) 등으로 처리하는게 용이하듯이, 이산적인 신호 표현을 많이 다루게 된다. Implicit Neural Representations 연구에서는 이러한 이산적 신호 표현들을 연속적인 함수로 취급해 다루고자 한다.</p>
 
-<p>그 방법 중 하나는 ‘신호를 mapping할 연속적인 도메인’을 입력으로 받으면, ‘도메인에 해당하는 signal의 값’을 출력하는 매핑 함수를 찾는 것이다. 간단히 예를 들어, 이미지를 다루고자 한다면 ‘좌표’를 입력받아서 ‘좌표에 해당하는 이미지의 RGB 값’을 출력하는 함수를 만드는 것이다. 얼핏 생각해보면 이러한 함수는 직접 수식을 일일히 도입하는 수치적 방식으론 풀어낼 수 없는 문제이지만, 뉴럴 네트워크의 강력한 근사능력을 활용하여 ‘그럴듯한’ implicit 함수를 만들어낼 수 있는 시기가 도래했다.</p>
+<p>그 방법 중 하나는 ‘신호를 mapping할 연속적인 도메인’을 입력으로 받으면, ‘도메인에 해당하는 signal의 값’을 출력하는 매핑 함수를 찾는 것이다. 간단히 예를 들어, 이미지를 다루고자 한다면 ‘좌표’를 입력받아서 ‘좌표에 해당하는 이미지의 RGB 값’을 출력하는 함수를 만드는 것이다. 얼핏 생각해보면 이러한 함수는 직접 수식을 일일히 도입하는 수치적 방식으론 풀어낼 수 없는 문제이지만, 뉴럴 네트워크의 강력한 근사능력을 활용하여 ‘그럴듯한’ implicit 함수<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>를 만들어낼 수 있는 시기가 도래했다.</p>
 
 <h3 id="why-are-they-interesting">
 <a class="anchor" href="#why-are-they-interesting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why are they interesting?</h3>
@@ -207,6 +207,13 @@ https://github.com/bmild/nerf/issues/60</p>
 <h3 id="references">
 <a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h3>
 <ol class="bibliography"></ol>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>원래 Implicit function이라는 개념은, 본래 수학과 그래픽스 분야에서 기하정보를 모델링하기 위한 암시적 표현 방법이다. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
@@ -242,7 +249,7 @@ https://github.com/bmild/nerf/issues/60</p>
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/soon0698" title="soon0698"><svg class="svg-icon grey"><use xlink:href="/immersion/assets/minima-social-icons.svg#github"></use></svg></a></li></ul>
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/soon0698" target="_blank" title="soon0698"><svg class="svg-icon grey"><use xlink:href="/immersion/assets/minima-social-icons.svg#github"></use></svg></a></li></ul>
 </div>
 
   </div>
